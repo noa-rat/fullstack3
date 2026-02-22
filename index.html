@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div id="app"></div>
+
+<!-- templates -->
+<template id="loginTemplate">
+    <h2>התחברות</h2>
+    <div>
+        <input type="text" id="login-username" placeholder="שם משתמש"><br><br>
+        <input type="password" id="login-password" placeholder="סיסמה"><br><br>
+        <button id="login-submit">כניסה</button>
+        <button id="to-register">להרשמה</button>
+    </div>
+</template>
+
+<template id="registerTemplate">
+    <h2>הרשמה</h2>
+    <div>
+        <input type="text" id="reg-username" placeholder="שם משתמש"><br><br>
+        <input type="password" id="reg-password" placeholder="סיסמה"><br><br>
+        <input type="tel" id="reg-phone" placeholder="טלפון"><br><br>
+        <input type="email" id="reg-email" placeholder="דוא""ל"><br><br>
+        <button id="register-submit">הרשמה</button>
+        <button id="to-login">חזרה להתחברות</button>
+    </div>
+</template>
+
+<template id="personalAreaTemplate">
+    <aside>
+        <div id="user-info">
+            <p>משתמש: <span id="user-name"></span></p>
+        </div>
+    </aside>
+    <main>
+        <div id="controls">
+            <input type="text" id="search" placeholder="חיפוש"> 
+            <select id="sort">
+                <option value="title">כותרת</option>
+                <option value="color">צבע</option>
+                <option value="date">תאריך</option>
+            </select>
+        </div>
+        <!-- new note inputs -->
+        <div id="new-note-area">
+            <input type="text" id="new-note-title" placeholder="כותרת חדשה">
+            <input type="color" id="new-note-color" value="#ffffff">
+            <button id="new-note">הוסף פתק חדש</button>
+        </div>
+        <div id="notes-list"></div>
+    </main>
+</template>
+
+<template id="noteViewTemplate">
+    <button id="back-to-list">← חזור לרשימה</button>
+    <div style="margin-top: 20px;">
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">כותרת:</label>
+            <input type="text" id="note-title-edit" placeholder="כותרת">
+        </div>
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">צבע:</label>
+            <input type="color" id="note-color-edit" value="#ffffff">
+        </div>
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">תוכן:</label>
+            <textarea id="note-content-edit" placeholder="תוכן הפתק" style="width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; min-height: 200px;"></textarea>
+        </div>
+        <div style="margin-bottom: 16px;">
+            <p style="font-size: 0.9rem; color: #666;">עדכון אחרון: <span id="note-date"></span></p>
+        </div>
+        <button id="update-note" style="background-color: #27ae60;">עדכן ושמור</button>
+        <button id="delete-note" style="background-color: #e74c3c; margin-right: 8px;">מחק פתק</button>
+    </div>
+</template>
+
+
+    <script src="fajax.js"></script>
+    <script src="network.js"></script>
+    <script src="auth-server.js"></script>
+    <script src="notes-server.js"></script>
+    <script src="db-api.js"></script>
+    <script src="router.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

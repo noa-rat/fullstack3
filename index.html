@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+  קובץ HTML הראשי של ה-SPA.
+  מכיל אלמנט ריק <div id="app"> אליו נטען כל התיעוד דינמי.
+  כל התוכן מוצג באמצעות <template> שמועתק ל-DOM ב-app.js.
+-->
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +14,10 @@
 <body>
 <div id="app"></div>
 
-<!-- templates -->
+<!-- templates: כל הטפסים/מסכים השונים נטענים מהתבניות האלו -->
 <template id="loginTemplate">
-    <h2>התחברות</h2>
-    <div>
+    <div class="form-container">
+        <h2>התחברות</h2>
         <input type="text" id="login-username" placeholder="שם משתמש"><br><br>
         <input type="password" id="login-password" placeholder="סיסמה"><br><br>
         <button id="login-submit">כניסה</button>
@@ -21,21 +26,25 @@
 </template>
 
 <template id="registerTemplate">
-    <h2>הרשמה</h2>
-    <div>
+    <div class="form-container">
+        <h2>הרשמה</h2>
         <input type="text" id="reg-username" placeholder="שם משתמש"><br><br>
         <input type="password" id="reg-password" placeholder="סיסמה"><br><br>
         <input type="tel" id="reg-phone" placeholder="טלפון"><br><br>
-        <input type="email" id="reg-email" placeholder="דוא""ל"><br><br>
+        <input type="email" id="reg-email" placeholder="דוא&quot;ל"><br><br>
         <button id="register-submit">הרשמה</button>
         <button id="to-login">חזרה להתחברות</button>
     </div>
 </template>
 
 <template id="personalAreaTemplate">
+    <!-- אזור אישי: רשימת פתקים ופרטי המשתמש -->
     <aside>
         <div id="user-info">
-            <p>משתמש: <span id="user-name"></span></p>
+            <p class="user-info-title">משתמש</p>
+            <p class="user-name-box"><span id="user-name"></span></p>
+            <p class="user-info-text">טלפון: <span id="user-phone"></span></p>
+            <p class="user-info-text">דוא"ל: <span id="user-email"></span></p>
         </div>
     </aside>
     <main>
@@ -47,9 +56,10 @@
                 <option value="date">תאריך</option>
             </select>
         </div>
-        <!-- new note inputs -->
+        <!-- חלק להוספת פתק חדש: כותרת, צבע וכפתור -->
         <div id="new-note-area">
             <input type="text" id="new-note-title" placeholder="כותרת חדשה">
+            <label for="new-note-color" class="color-label">בחר צבע:</label>
             <input type="color" id="new-note-color" value="#ffffff">
             <button id="new-note">הוסף פתק חדש</button>
         </div>
@@ -58,25 +68,26 @@
 </template>
 
 <template id="noteViewTemplate">
+    <!-- מסך עריכת/צפייה בפתק בודד -->
     <button id="back-to-list">← חזור לרשימה</button>
-    <div style="margin-top: 20px;">
-        <div style="margin-bottom: 16px;">
-            <label style="display: block; margin-bottom: 8px; font-weight: bold;">כותרת:</label>
-            <input type="text" id="note-title-edit" placeholder="כותרת">
+    <div class="note-edit-container">
+        <div class="form-group">
+            <label class="form-label">כותרת:</label>
+            <input type="text" id="note-title-edit" class="form-input" placeholder="כותרת">
         </div>
-        <div style="margin-bottom: 16px;">
-            <label style="display: block; margin-bottom: 8px; font-weight: bold;">צבע:</label>
-            <input type="color" id="note-color-edit" value="#ffffff">
+        <div class="form-group">
+            <label class="form-label">צבע:</label>
+            <input type="color" id="note-color-edit" class="form-input" value="#ffffff">
         </div>
-        <div style="margin-bottom: 16px;">
-            <label style="display: block; margin-bottom: 8px; font-weight: bold;">תוכן:</label>
-            <textarea id="note-content-edit" placeholder="תוכן הפתק" style="width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; min-height: 200px;"></textarea>
+        <div class="form-group">
+            <label class="form-label">תוכן:</label>
+            <textarea id="note-content-edit" class="form-textarea" placeholder="תוכן הפתק"></textarea>
         </div>
-        <div style="margin-bottom: 16px;">
-            <p style="font-size: 0.9rem; color: #666;">עדכון אחרון: <span id="note-date"></span></p>
+        <div class="form-group">
+            <p class="note-date-text">עדכון אחרון: <span id="note-date"></span></p>
         </div>
-        <button id="update-note" style="background-color: #27ae60;">עדכן ושמור</button>
-        <button id="delete-note" style="background-color: #e74c3c; margin-right: 8px;">מחק פתק</button>
+        <button id="update-note" class="btn-save">עדכן ושמור</button>
+        <button id="delete-note" class="btn-delete">מחק פתק</button>
     </div>
 </template>
 

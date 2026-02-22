@@ -17,6 +17,19 @@ body {
 }
 
 /* login/register forms */
+.form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center; /* center everything including the h2 */
+}
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -33,6 +46,7 @@ select {
 button {
     padding: 10px 16px;
     font-size: 1rem;
+    font-family: inherit;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -41,6 +55,9 @@ button {
     transition: background-color 0.2s ease;
 }
 
+input, select, textarea {
+    font-family: inherit;
+}
 button:hover {
     background-color: #005fa3;
 }
@@ -60,11 +77,15 @@ aside {
     padding: 20px;
     background: #f5f5f5;
     border-right: 1px solid #e0e0e0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
 main {
     margin-left: 240px;
     padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
 #controls {
@@ -73,6 +94,20 @@ main {
     align-items: center;
     margin-bottom: 20px;
 }
+
+#new-note-area {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+}
+.color-label {
+    font-size: 0.9rem;
+    margin-right: 4px;
+}#new-note-title { flex: 1; min-width: 0; }
+#new-note-color { width: 40px; padding: 0; border: none; height: 40px; }
+#new-note { white-space: nowrap; }
 
 #controls input {
     flex: 1;
@@ -94,6 +129,10 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: box-shadow 0.2s ease;
+}
+.note-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .note-item .info {
@@ -121,13 +160,19 @@ main {
 }
 
 /* note view screen */
-#note-content {
-    margin-top: 16px;
-    padding: 12px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
+.note-edit-container { margin-top: 20px; }
+
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; margin-bottom: 8px; font-weight: bold; }
+.form-input, .form-textarea { width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+.form-textarea { min-height: 200px; resize: vertical; }
+
+.note-date-text { font-size: 0.9rem; color: #666; }
+
+.btn-save { background-color: #27ae60; color: #fff; }
+.btn-delete { background-color: #e74c3c; color: #fff; margin-right: 8px; }
+.btn-save:hover { background-color: #219150; }
+.btn-delete:hover { background-color: #c0392b; }
 
 #back-to-list {
     margin-bottom: 16px;
@@ -139,4 +184,34 @@ main {
 
 #back-to-list:hover {
     text-decoration: underline;
+}
+
+/* user info panel styles */
+#user-info, .user-info { display: flex; flex-direction: column; gap: 8px; }
+#user-info .user-info-title,
+.user-info-title { font-weight: bold; font-size: 1.1rem; }
+#user-info .user-name-box,
+.user-name-box { background-color: #e8f4f8; padding: 8px 12px; border-radius: 4px; word-break: break-word; }
+#user-info .user-info-text,
+.user-info-text { font-size: 0.9rem; margin-top: 4px; }
+
+/* loader overlay */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.6);
+    z-index: 1000;
+}
+
+#loader .loader-box {
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <!--
-  קובץ HTML הראשי של ה-SPA.
-  מכיל אלמנט ריק <div id="app"> אליו נטען כל התיעוד דינמי.
-  כל התוכן מוצג באמצעות <template> שמועתק ל-DOM ב-app.js.
+קובץ אחיד שמכיל את כל העמודים בתבניות נפרדות
+כאשר בכל פעם נטענת אחת התבניות בהתאם לנתיב  הנוכחי
 -->
+
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 <body>
 <div id="app"></div>
 
-<!-- templates: כל הטפסים/מסכים השונים נטענים מהתבניות האלו -->
+<!-- התחברות -->
 <template id="loginTemplate">
     <div class="form-container">
         <h2>התחברות</h2>
@@ -25,6 +25,7 @@
     </div>
 </template>
 
+<!-- הרשמה -->
 <template id="registerTemplate">
     <div class="form-container">
         <h2>הרשמה</h2>
@@ -37,8 +38,9 @@
     </div>
 </template>
 
+<!-- אזור אישי -->
 <template id="personalAreaTemplate">
-    <!-- אזור אישי: רשימת פתקים ופרטי המשתמש -->
+    <!-- פרטי המשתמש -->
     <aside>
         <div id="user-info">
             <p class="user-info-title">משתמש</p>
@@ -48,6 +50,7 @@
         </div>
     </aside>
     <main>
+        <!-- חיפוש ומיון -->
         <div id="controls">
             <input type="text" id="search" placeholder="חיפוש"> 
             <select id="sort">
@@ -56,29 +59,33 @@
                 <option value="date">תאריך</option>
             </select>
         </div>
-        <!-- חלק להוספת פתק חדש: כותרת, צבע וכפתור -->
+        <!-- הוספת פתק חדש -->
         <div id="new-note-area">
             <input type="text" id="new-note-title" placeholder="כותרת חדשה">
             <label for="new-note-color" class="color-label">בחר צבע:</label>
             <input type="color" id="new-note-color" value="#ffffff">
             <button id="new-note">הוסף פתק חדש</button>
         </div>
+        <!-- רשימת הפתקים -->
         <div id="notes-list"></div>
     </main>
 </template>
 
+<!-- תצוגה מלאה של פתק בודד -->
 <template id="noteViewTemplate">
-    <!-- מסך עריכת/צפייה בפתק בודד -->
     <button id="back-to-list">← חזור לרשימה</button>
     <div class="note-edit-container">
+        <!-- כותרת -->
         <div class="form-group">
             <label class="form-label">כותרת:</label>
             <input type="text" id="note-title-edit" class="form-input" placeholder="כותרת">
         </div>
+        <!-- צבע -->
         <div class="form-group">
             <label class="form-label">צבע:</label>
             <input type="color" id="note-color-edit" class="form-input" value="#ffffff">
         </div>
+        <!-- תוכן -->
         <div class="form-group">
             <label class="form-label">תוכן:</label>
             <textarea id="note-content-edit" class="form-textarea" placeholder="תוכן הפתק"></textarea>
@@ -91,7 +98,7 @@
     </div>
 </template>
 
-
+    <!-- טעינת הסקריפטים של ניהול האפליקציה, הרשת והשרתים -->
     <script src="fajax.js"></script>
     <script src="network.js"></script>
     <script src="auth-server.js"></script>

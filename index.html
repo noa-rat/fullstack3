@@ -43,10 +43,12 @@
     <!-- פרטי המשתמש -->
     <aside>
         <div id="user-info">
-            <p class="user-info-title">משתמש</p>
+            <p class="user-info-title">שם משתמש</p>
             <p class="user-name-box"><span id="user-name"></span></p>
-            <p class="user-info-text">טלפון: <span id="user-phone"></span></p>
-            <p class="user-info-text">דוא"ל: <span id="user-email"></span></p>
+            <p class="user-info-title">טלפון</p>
+            <p class="user-name-box"><span id="user-phone"></span></p>
+            <p class="user-info-title">דוא"ל</p>
+            <p class="user-name-box"><span id="user-email"></span></p>
         </div>
     </aside>
     <main>
@@ -80,15 +82,15 @@
             <label class="form-label">כותרת:</label>
             <input type="text" id="note-title-edit" class="form-input" placeholder="כותרת">
         </div>
-        <!-- צבע -->
-        <div class="form-group">
-            <label class="form-label">צבע:</label>
-            <input type="color" id="note-color-edit" class="form-input" value="#ffffff">
-        </div>
         <!-- תוכן -->
         <div class="form-group">
             <label class="form-label">תוכן:</label>
             <textarea id="note-content-edit" class="form-textarea" placeholder="תוכן הפתק"></textarea>
+        </div>
+        <!-- צבע -->
+        <div class="form-group">
+            <label class="form-label">צבע:</label>
+            <input type="color" id="note-color-edit" class="form-input" value="#ffffff">
         </div>
         <div class="form-group">
             <p class="note-date-text">עדכון אחרון: <span id="note-date"></span></p>

@@ -93,7 +93,8 @@ main {
 .color-label {
     font-size: 0.9rem;
     margin-right: 4px;
-}#new-note-title { flex: 1; min-width: 0; }
+}
+#new-note-title { flex: 1; min-width: 0; }
 #new-note-color { width: 40px; padding: 0; border: none; height: 40px; }
 #new-note { white-space: nowrap; }
 
